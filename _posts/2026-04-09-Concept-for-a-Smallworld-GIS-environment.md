@@ -233,12 +233,12 @@ $CustomerProductsLibsTargetDirectory = "$CustomerProductsDir\libs_$env:TIMESTAMP
 #endregion variables
 
 Write-Host "START removing files."
-##region Delete JAR and SER in additional products
+#region Delete JAR and SER in additional products
 Remove-Item -Path $AddonProductsDir\CUSTOMER_- -Force -Recurse -Include -.jar, product.ser -ErrorAction SilentlyContinue
 Remove-Item -Path $AddonProductsDir\its_product\-_gw -Force -Recurse -Include -.jar, product.ser -ErrorAction SilentlyContinue
 Remove-Item -Path $AddonProductsDir\ub_product\ub_- -Force -Recurse -Include -.jar, product.ser -ErrorAction SilentlyContinue
 Remove-Item -Path $AddonProductsDir\sepm_product\x_translator_gw -Force -Recurse -Include -.jar, product.ser -ErrorAction SilentlyContinue
-##endregion Delete JAR in additional products
+#endregion Delete JAR in additional products
 ...
 ```
 
