@@ -1,0 +1,7 @@
+main:
+  - title: "Tags"
+    url: /tags/
+  - title: "Categories"
+    url: /categories/
+  - title: "Links"
+    url: /links/
