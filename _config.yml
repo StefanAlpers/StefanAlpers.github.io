@@ -4,7 +4,12 @@ minimal_mistakes_skin: "air"
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
-  
+
+title: "Stefan's thoughts about issues of all kinds"
+name: "Stefan Alpers"
+description: ""
+show_date: true
+
 author:
   name: "Stefan Alpers"
   location: "Oberhausen, Germany"
@@ -12,12 +17,8 @@ author:
   links:
     - label: "Email"
       icon: "fas fa-fw fa-square-envelope"
-description: ""
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/stefanalpers"
-name: "Stefan Alpers"
-show_date: true
-title: "Stefan's thoughts about issues of all kinds"
