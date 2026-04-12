@@ -49,7 +49,17 @@ Not long ago, I took the time to transform this to Powershell code and this is t
 Start-Process -FilePath "$env:SMALLWORLD_X86\runalias.exe" -ArgumentList "-e $env:SW_GIS_ENVIRONMENT_FILE -a $env:CONFIG_DIR\gis_aliases $env:GIS_SESSION"
 ```
 
-In Powershell, environment variables are called by $env:$lt;VARIABLE$gt; and set with $env:$lt;VARIABLE$gt;=$lt;VALUE$gt;
+In Powershell, environment variables are called by 
+
+```powershell
+$env:<VARIABLE>
+```
+
+ and set with 
+
+```powershell
+$env:<VARIABLE>=<VALUE>
+```
 
 The commandlet Start-Process starts an executable handed over with the parameter -FilePath and with the arguments passed by the paramater -ArgumentList.
 
