@@ -6,6 +6,7 @@ tags:
     - gis
     - smallworld
     - administration
+    - concepts
 ---
 
 ## Preface
@@ -175,7 +176,7 @@ $env:GIS_ALIASES_FILE='gis_aliases'
 & $PSScriptRoot\start_session.52106.ps1
 ```
 
-The generic script start_session.52106.ps1 assembles environment variables, calls a file for pre-processes (e.g., connecting a share as a drive), starts the GIS, and after it terminates, calls a file for post-processes (e.g., disconnecting the share).
+The generic script start_session.52106.ps1 assembles environment variables, calls a file for pre-processes (e.g. connecting a share, display an information to the user), starts the GIS, and after it terminates, calls a file for post-processes (e.g. disconnecting the share).
 
 ### Generic Script
 ```powershell
