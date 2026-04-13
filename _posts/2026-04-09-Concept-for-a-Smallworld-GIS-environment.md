@@ -8,6 +8,21 @@ tags:
     - administration
     - concepts
 ---
+- [Preface](#preface)
+- [How does the Smallworld GIS work?](#how-does-the-smallworld-gis-work)
+- [Requirements](#requirements)
+- [All in one and conventions](#all-in-one-and-conventions)
+  - [File server](#file-server)
+  - [Database server](#database-server)
+- [Traceability of changes](#traceability-of-changes)
+- [Consistent and Meaningful Use of Environment Variables](#consistent-and-meaningful-use-of-environment-variables)
+- [Control Over Desktop Shortcuts](#control-over-desktop-shortcuts)
+- [Implementation in Practice Using the Example of a Customer](#implementation-in-practice-using-the-example-of-a-customer)
+  - [Environment-Specific Script](#environment-specific-script)
+  - [Generic Script](#generic-script)
+  - [Environment-Specific Script for Emacs](#environment-specific-script-for-emacs)
+  - [Environment-Specific Script for Compilation](#environment-specific-script-for-compilation)
+  - [Epilogue](#epilogue)
 
 ## Preface
 

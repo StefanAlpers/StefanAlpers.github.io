@@ -8,6 +8,12 @@ tags:
     - git
     - development
 ---
+- [What is a Smallworld module?](#what-is-a-smallworld-module)
+- [Module versions in the past](#module-versions-in-the-past)
+- [What has changed?](#what-has-changed)
+- [Consequences for deployments](#consequences-for-deployments)
+- [How to set a version number?](#how-to-set-a-version-number)
+- [A solution using a git pre-commit hook](#a-solution-using-a-git-pre-commit-hook)
 
 ## What is a Smallworld module?
 
@@ -45,11 +51,11 @@ product_name.module_name.VERSION(!!!).JAR
 
 Prior to Smallworld GIS 5, Magik code was compiled into RAM and then a so-called image, a memory dump, was saved. During startup the image unfolded into RAM and had no connection to Magik files.
 
-To introduce new functionality, you modified the Magik code. Until you saved a new image, this new functionalities weren't available.
+To introduce new functionality, you modified the Magik code. Until you saved a new image, this new functionality wasn't available.
 
 Have you ever tried to delete or overwrite a JAR file deployed to production? Chances are good that it is linked to a Smallworld session and therefore can't be deleted.
 
-Have you ever tried to merge a git test branch into production branch during working hours? Chances are good that the production environment is critically hurt afterwards. Try changing the module's version the next time.
+Have you ever tried to merge a git test branch into production branch during working hours? There is a good chance the production environment will be seriously affected. Try changing the module's version the next time.
 
 Do you like to merge changes from test to production after working hours or at the weekend? Try changing the module's version the next time.
 
@@ -63,17 +69,22 @@ Just check which module you made changes in, open its module.def and place an ar
 
 And it's annoying. I'm not aware of any feature in Emacs, MDT or Visual Studio Code that offers a more compelling approach and supports developers in this — in my view — increasingly important step.
 
-## A Solution using git a pre-commit hook
+## A solution using a git pre-commit hook
 
-### Git hooks
+Since in my opinion, working with git is a must, even in a Smallworld GIS environment, I figured out an adequate solution using a git pre-commit hook.
 
-> **What are they?**
-> Scripts Git executes automatically at specific points in your workflow — before or after committing, pushing, or merging. They live in `.git/hooks` and can be written in any scripting language.
->
-> **Categories:** `pre-commit`, `pre-push`, `post-merge` (client-side) · `pre-receive`, `post-receive` (server-side)
->
-> #### `pre-commit`
-> Runs before Git asks for a commit message. Exiting non-zero aborts the commit. Bypass with `--no-verify`.
-> Common uses: run linters, run tests, check trailing whitespace, inspect staged snapshot.
->
-> **Further reading:** [Git hooks guide](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) · [githooks reference](https://git-scm.com/docs/githooks)
+**What are Git hooks?**
+Scripts Git executes automatically at specific points in your workflow — before or after committing, pushing, or merging. They live in `.git/hooks` and can be written in any scripting language.
+
+**Client-side:** pre-commit, pre-push, post-merge · **Server-side:** pre-receive, post-receive
+
+**pre-commit** runs before Git asks for a commit message. Exiting non-zero aborts the commit. Bypass with `--no-verify`. Common uses: run linters, check trailing whitespace, inspect staged snapshot.
+
+Further reading: [Git hooks guide](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks) · [githooks reference](https://git-scm.com/docs/githooks)
+{: .notice--info}
+
+The pre-commit hook checks all staged files and determines the Smallworld modules they belong to. The module's version is then set using the actual date in the format "yyyyMMdd" and changed module.def are added to the commit.
+
+The hook is available [here](https://github.com/stefanalpers/smallworld-git-hooks). It is quite new and has so far only been tested by me. Feel free to use it and I'd welcome your feedback.
+
+Don't forget to recompile after updating the version number in module.def to keep it in sync with the JAR file name. That step could perhaps be automated too — using a post-receive hook?

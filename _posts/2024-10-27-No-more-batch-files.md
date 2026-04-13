@@ -8,6 +8,10 @@ tags:
     - powershell
     - concepts
 ---
+- [Introduction to Smallworld's use of batch files](#introduction-to-smallworlds-use-of-batch-files)
+- [The same in powershell](#the-same-in-powershell)
+- [Benefits of using powershell](#benefits-of-using-powershell)
+
 ## Introduction to Smallworld's use of batch files
 
 Smallworld is designed to use environment variables available from the operating system. Historically they are defined in BAT files, which are invoked when starting the GIS.
