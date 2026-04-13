@@ -3,10 +3,11 @@ title: "No more batch files"
 categories:
     - gis
 tags:
-    - gis
-    - smallworld
-    - powershell
+    - administration
     - concepts
+    - gis
+    - powershell
+    - smallworld
 ---
 - [Introduction to Smallworld's use of batch files](#introduction-to-smallworlds-use-of-batch-files)
 - [The same in powershell](#the-same-in-powershell)

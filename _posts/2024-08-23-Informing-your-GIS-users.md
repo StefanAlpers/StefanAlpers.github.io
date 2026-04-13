@@ -3,9 +3,11 @@ title: "Informing your GIS users"
 categories:
     - gis
 tags:
+    - administration
     - gis
-    - smallworld
+    - magik
     - powershell
+    - smallworld
 ---
 
 Have you ever needed to inform all GIS users? How did you do this?

@@ -3,10 +3,12 @@ title: "A better way to load Smallworld GIS sessions"
 categories:
     - gis
 tags:
-    - gis
-    - smallworld
     - administration
+    - gis
     - magik
+    - optimization 
+    - performance
+    - smallworld
 ---
 
 By now, anyone working with Smallworld 5 should know that using precompiled JAR files significantly improve startup performance. However, the starting point of a session is still the module in CUSTOMER_PRODUCTS\config\magik_sessions, which requires some Magik code to be loaded:

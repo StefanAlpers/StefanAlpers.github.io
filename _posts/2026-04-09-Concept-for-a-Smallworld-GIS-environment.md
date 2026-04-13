@@ -3,10 +3,12 @@ title: "Concept for a Smallworld GIS environment that is easy to deploy and main
 categories:
     - gis
 tags:
-    - gis
-    - smallworld
-    - administration
+    - administration 
     - concepts
+    - devops
+    - gis
+    - git
+    - smallworld
 ---
 - [Preface](#preface)
 - [How does the Smallworld GIS work?](#how-does-the-smallworld-gis-work)

@@ -7,6 +7,7 @@ tags:
     - smallworld
     - git
     - development
+    - devops
 ---
 - [What is a Smallworld module?](#what-is-a-smallworld-module)
 - [Module versions in the past](#module-versions-in-the-past)
