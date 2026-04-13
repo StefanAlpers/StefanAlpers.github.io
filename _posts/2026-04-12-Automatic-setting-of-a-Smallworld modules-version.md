@@ -65,14 +65,14 @@ And it's annoying. I'm not aware of any feature in Emacs, MDT or Visual Studio C
 
 ## A Solution using git a pre-commit hook
 
-## Git hooks
+### Git hooks
 
 > **What are they?**
 > Scripts Git executes automatically at specific points in your workflow — before or after committing, pushing, or merging. They live in `.git/hooks` and can be written in any scripting language.
 >
 > **Categories:** `pre-commit`, `pre-push`, `post-merge` (client-side) · `pre-receive`, `post-receive` (server-side)
 >
-> ### `pre-commit`
+> #### `pre-commit`
 > Runs before Git asks for a commit message. Exiting non-zero aborts the commit. Bypass with `--no-verify`.
 > Common uses: run linters, run tests, check trailing whitespace, inspect staged snapshot.
 >
