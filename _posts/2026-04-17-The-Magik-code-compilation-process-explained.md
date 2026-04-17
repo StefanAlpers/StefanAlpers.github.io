@@ -162,7 +162,9 @@ $CustomerProductsLibsTargetDirectory = "$CustomerProductsDir\libs_$env:TIMESTAMP
 Write-Host "START remove files."
 #region Delete JAR and SER in additional products
 Remove-Item -Path $AddonProductsDir\example_product_* -Force -Recurse -Include *.jar, product.ser -ErrorAction SilentlyContinue
-# IMPORTANT NOTICE FOR READERS: Only delete JAR files if you can recreate them by your own. Never delete JAR files from partner products or even core products!
+# IMPORTANT NOTICE FOR READERS:
+# Only delete JAR files if you can recreate them by your own.
+# Never delete JAR files from partner products or even core products!
 #endregion Delete JAR in additional products
 
 #region Delete SER in customer products
@@ -182,12 +184,15 @@ If ((Test-Path $CustomerProductsLibsLinkDirectory) -eq $true)
 
 New-Item -Path $CustomerProductsLibsLinkDirectory -ItemType Junction -Value $CustomerProductsLibsTargetDirectory
 Write-Host "END create junction."
-# REMARK FOR READERS: This only creates a junction for CUSTOMER_PRODUCTS. I haven't yet tried this for products in ADDITIONAL_PRODUCTS.
+# REMARK FOR READERS
+# This only creates a junction for CUSTOMER_PRODUCTS.
+# I haven't yet tried this for products in ADDITIONAL_PRODUCTS.
 #endregion Create junction
 
 #region Delete database context
 Write-Host "START Delete database context."
-# Deleting the database context is never an error. Maybe a database has changed during the deployment of a Smallworld module.
+# Deleting the database context is never an error. 
+# Maybe a database has changed during the deployment of a Smallworld module.
 Get-ChildItem -Directory -Path $CustomerProductsDir\.. -Filter SW_DB_CONTEXT_DIR* | ForEach-Object {
 	$directoryFullName = $_.FullName
     Remove-Item -Path "$directoryFullName\*" -Exclude .gitignore
