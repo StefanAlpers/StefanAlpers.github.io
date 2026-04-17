@@ -37,14 +37,14 @@ You simply register a `magik_session` like this and make sure that is loaded int
 
 ```magik
 magik_session.register_new(
-		"magik2java",
-        # Use a session that has most of the Smallworld products that you need already included.
-		:parent_session, "nrmb:nrmb_swaf_closed",
-        # Add all products that are not included in the parent_session but are needed during the compilation.
-        # For example if any module in your CUSTOMER_PRODUCTS changes record exemplars defined in the product :nrm.
-		:add_products, { :nrm, :soms, :sw_dxf, _scatter addon_products},
-        # this procedure is invoked after the session has been started.
-		:post_build_proc, magik2java_proc )
+    "magik2java",
+    # Use a session that has most of the Smallworld products that you need already included.
+    :parent_session, "nrmb:nrmb_swaf_closed",
+    # Add all products that are not included in the parent_session but are needed during the compilation.
+    # For example if any module in your CUSTOMER_PRODUCTS changes record exemplars defined in the product :nrm.
+    :add_products, { :nrm, :soms, :sw_dxf, _scatter addon_products},
+    # this procedure is invoked after the session has been started.
+    :post_build_proc, magik2java_proc )
 ```
 
 Please notice that this session doesn't need any more parameters like `:startup_proc` or `:load_modules`. All the magic is done within the post_build_proc.
@@ -61,43 +61,43 @@ The following code is an example and includes more method calls that I'll explai
 
 ```magik
 magik2java<<
-		_proc@magik2java()
-		
-			_local l_product << _unset
-			_local l_products2compile << {:customer_product, ...}
-			_local l_customisation_products2compile << {:customisation_product, ...}
-			
-			_protect
-				_handling error _with
-				_proc@build_error_handler(p_error)
-					write("Compilation of modules failed at ",date_time.now()," with message: ")
-					p_error.report_on(!output!)
-					!traceback!(!output!)
-					write("QUIT session")
-				_endproc
-				
-				_for i_product_name _over l_products2compile.fast_elements()
-				_loop
-					show(i_product_name)
-					l_product << smallworld_product.product(i_product_name)
-					l_product.reinitialise()
-					l_product.compile_all_modules()
-					l_product.compile_messages()
-					l_product.compile_module_messages()
-					l_product.save_serialised_module_definitions()
-				_endloop
+    _proc@magik2java()
+    
+        _local l_product << _unset
+        _local l_products2compile << {:customer_product, ...}
+        _local l_customisation_products2compile << {:customisation_product, ...}
+        
+        _protect
+            _handling error _with
+            _proc@build_error_handler(p_error)
+                write("Compilation of modules failed at ",date_time.now()," with message: ")
+                p_error.report_on(!output!)
+                !traceback!(!output!)
+                write("QUIT session")
+            _endproc
+            
+            _for i_product_name _over l_products2compile.fast_elements()
+            _loop
+                show(i_product_name)
+                l_product << smallworld_product.product(i_product_name)
+                l_product.reinitialise()
+                l_product.compile_all_modules()
+                l_product.compile_messages()
+                l_product.compile_module_messages()
+                l_product.save_serialised_module_definitions()
+            _endloop
 
-				_for i_product_name _over l_customisation_products2compile.fast_elements()
-				_loop
-					show(i_product_name)
-					l_product << smallworld_product.product(i_product_name)
-					l_product.save_serialised_module_definitions()
-				_endloop
-				
-			_protection
-				write("QUIT session")
-			_endprotect
-		_endproc
+            _for i_product_name _over l_customisation_products2compile.fast_elements()
+            _loop
+                show(i_product_name)
+                l_product << smallworld_product.product(i_product_name)
+                l_product.save_serialised_module_definitions()
+            _endloop
+            
+        _protection
+            write("QUIT session")
+        _endprotect
+    _endproc
 	
 _endblock
 $
@@ -121,8 +121,11 @@ Creates the `product.ser` which contains serialised information about the module
 
 For the same reason it is also needed for customisation products that only include MSG, TRN, XML and other resources.
 
-An important thing to know about these file is that it isn't overwritten when a product is compiled. That can lead to unexpected errors when a new module is added and is required by an already existing module. The requirements are part of the product.ser and until it is recreated, new requirements defined in the module.def are not known.
-{: .notice--info}
+<div class="notice--info" markdown="1">
+An important thing to know about these file is that it isn't overwritten when a product is compiled. That can lead to unexpected errors when a new module is added and is required by an already existing module. 
+
+The requirements are part of the product.ser and until it is recreated, new requirements defined in the module.def are not known.
+</div>
 
 
 Of course you can delete the product.ser inside the procedure prior this method call.
